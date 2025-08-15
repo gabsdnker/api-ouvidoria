@@ -12,12 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api_ouvidoria.api_ouvidoria.model.Ouvidoria;
-import com.api_ouvidoria.api_ouvidoria.model.enums.AreaOuvidoria;
-import com.api_ouvidoria.api_ouvidoria.model.enums.TipoOuvidoria;
 import com.api_ouvidoria.api_ouvidoria.service.OuvidoriaService;
 
 @RestController
@@ -33,18 +30,20 @@ public class OuvidoriaController {
         ouvidoriaService.cadastrarOuvidoria(ouvidoria);
     }
 
-    //Método para criar uma ouvidoria com parâmetros específicos
-    @PostMapping
-    public String criarOuvidoria(
-        @RequestParam TipoOuvidoria nome_tipo,
-        @RequestParam AreaOuvidoria nome_area
-    ) {
-        // Lógica para criar a ouvidoria
-        return "Tipo: " + nome_tipo + ", Área: " + nome_area;
+    //Método para adicionar protocolo
+    @PostMapping("/protocolo")
+    public String protocoloOuvidoria() {
+        return ouvidoriaService.protocoloOuvidoria();
+    }
+
+    //Método para adicionar data
+    @PostMapping("/data")
+    public String dataOuvidoria() {
+        return ouvidoriaService.dataOuvidoria();
     }
 
     //Método para listar as ouvidorias
-    @GetMapping
+    @GetMapping //não ta indo
     public List<Ouvidoria> listarOuvidorias() {
         return ouvidoriaService.listarOuvidoria();
     }
@@ -65,18 +64,6 @@ public class OuvidoriaController {
     @GetMapping("/localizacao")
     public String localizacaoOuvidoria(@RequestBody String localizacao) {
         return ouvidoriaService.localizacaoOuvidoria(localizacao);
-    }
-
-    //Método para adicionar data
-    @GetMapping("/data")
-    public String dataOuvidoria() {
-        return ouvidoriaService.dataOuvidoria();
-    }
-
-    //Método para adicionar protocolo
-    @GetMapping("/protocolo")
-    public String protocoloOuvidoria() {
-        return ouvidoriaService.protocoloOuvidoria();
     }
 
     //Método para atualizar uma ouvidoria

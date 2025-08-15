@@ -1,5 +1,7 @@
 package com.api_ouvidoria.api_ouvidoria.model;
 
+import java.time.LocalDate;
+
 import com.api_ouvidoria.api_ouvidoria.model.enums.AreaOuvidoria;
 import com.api_ouvidoria.api_ouvidoria.model.enums.TipoOuvidoria;
 
@@ -39,7 +41,7 @@ public class Ouvidoria {
     private String localizacao;
 
     @Column(name = "data")
-    private String data;
+    private LocalDate data;
 
     @Enumerated(EnumType.STRING)
     private TipoOuvidoria nome_tipo;
@@ -58,7 +60,7 @@ public class Ouvidoria {
         this.descricao = descricao;
         this.midia = midia;
         this.localizacao = localizacao;
-        this.data = data;
+        this.data = LocalDate.parse(data);
         this.nome_tipo = nome_tipo;
         this.nome_area = nome_area;
     }
@@ -108,10 +110,10 @@ public class Ouvidoria {
 
 
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
