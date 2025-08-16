@@ -34,4 +34,3 @@ PRIMARY KEY (id_ouvidoria)
     "midia": "foto_rua.jpg"
 }
 
-IPV4 192.168.1.10 
