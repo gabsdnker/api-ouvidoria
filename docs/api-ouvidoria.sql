@@ -33,3 +33,5 @@ PRIMARY KEY (id_ouvidoria)
     "localizacao": "Rua das Flores, 123",
     "midia": "foto_rua.jpg"
 }
+
+IPV4 192.168.1.10 
