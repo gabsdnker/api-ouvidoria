@@ -1,6 +1,7 @@
 package com.api_ouvidoria.api_ouvidoria.model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import com.api_ouvidoria.api_ouvidoria.model.enums.AreaOuvidoria;
 import com.api_ouvidoria.api_ouvidoria.model.enums.TipoOuvidoria;
@@ -51,6 +52,13 @@ public class Ouvidoria {
 
     //Construtor vazio
     public Ouvidoria() {
+        this.data = LocalDate.now();
+        this.protocolo = gerarProtocolo();
+    }
+
+    //Função de gerar protcolo
+    private String gerarProtocolo(){
+        return UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
 
     //Construtor com atributos
@@ -78,11 +86,9 @@ public class Ouvidoria {
     public String getProtocolo() {
         return protocolo;
     }
-    public void setProtocolo(String protocolo) {
+    public void setProtocolo(String protocolo){
         this.protocolo = protocolo;
     }
-
-
 
     public String getDescricao() {
         return descricao;
